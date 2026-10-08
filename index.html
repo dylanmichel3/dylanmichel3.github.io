@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dylan Michel - Systems Administration &amp; Microsoft 365</title>
+<meta name="description" content="Dylan Michel is an IT professional in Miami, FL moving into systems administration: Microsoft 365, Windows endpoints, PowerShell and Python automation, and security monitoring projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Public+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#242019;
+    --paper:#F4EEE3;
+    --graphite:#6F6A5D;
+    --amber:#D9832E;
+    --hairline:#D8D0BE;
+    --sp-1:8px; --sp-2:16px; --sp-3:24px; --sp-4:40px; --sp-5:64px; --sp-6:96px;
+    --measure:65ch;
+  }
+  html{ scroll-behavior:auto; }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Public Sans", -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size:1.0625rem;
+    line-height:1.6;
+  }
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 var(--sp-3); }
+  a{ color:var(--ink); text-decoration:underline; text-underline-offset:3px; }
+  a:hover{ color:var(--amber); }
+  a:focus-visible{ outline:2px solid var(--ink); outline-offset:3px; }
+  .mono{ font-family:"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+  .skip{
+    position:absolute; left:-9999px; top:0;
+    background:var(--ink); color:var(--paper); padding:12px 16px; z-index:10;
+  }
+  .skip:focus{ left:var(--sp-2); top:var(--sp-2); color:var(--paper); }
+
+  /* Header bar */
+  .site-head{
+    display:flex; flex-wrap:wrap; align-items:baseline; gap:var(--sp-2) var(--sp-4);
+    padding:var(--sp-3) 0 var(--sp-2);
+    border-bottom:1px solid var(--hairline);
+  }
+  .wordmark{
+    font-family:"Fraunces", Georgia, serif; font-weight:650; font-size:1.25rem;
+    text-decoration:none;
+  }
+  .site-head nav{ margin-left:auto; }
+  .site-head nav ul{
+    list-style:none; margin:0; padding:0;
+    display:flex; flex-wrap:wrap; gap:var(--sp-1) var(--sp-3);
+  }
+  .site-head nav a{
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-size:.8125rem; letter-spacing:.08em; text-transform:uppercase;
+    text-decoration:none; padding:10px 2px; display:inline-block;
+  }
+  .site-head nav a:hover{ text-decoration:underline; text-underline-offset:4px; }
+
+  /* Intro */
+  .intro{ padding:var(--sp-5) 0 var(--sp-4); }
+  .intro h1{
+    font-family:"Fraunces", Georgia, serif; font-weight:650;
+    font-size:clamp(2.75rem, 7vw, 4.5rem); line-height:1.04;
+    margin:0 0 var(--sp-2); max-width:14ch;
+  }
+  .role{
+    font-size:1.25rem; line-height:1.45; color:var(--graphite);
+    margin:0 0 var(--sp-3); max-width:34ch;
+  }
+  .intro p{ max-width:var(--measure); margin:0 0 var(--sp-3); }
+  .meta-row{
+    font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:.875rem;
+    color:var(--graphite); display:flex; flex-wrap:wrap; gap:var(--sp-1) var(--sp-3);
+    margin-top:var(--sp-4);
+  }
+  .meta-row a{ color:var(--ink); }
+
+  /* Sections */
+  section{ border-top:1px solid var(--hairline); }
+  .sec-label{
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-size:.8125rem; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--graphite); margin:var(--sp-4) 0 var(--sp-3);
+  }
+  #work{ padding-bottom:var(--sp-5); }
+  #experience{ padding-bottom:var(--sp-6); }
+  #skills{ padding-bottom:var(--sp-5); }
+  #education{ padding-bottom:var(--sp-6); border-bottom:1px solid var(--hairline); }
+
+  .project{ margin:0 0 var(--sp-5); max-width:var(--measure); }
+  .project:last-child{ margin-bottom:0; }
+  .project h3{
+    font-family:"Fraunces", Georgia, serif; font-weight:650;
+    font-size:1.5rem; line-height:1.25; margin:0 0 var(--sp-1);
+  }
+  .project .meta{
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-size:.8125rem; color:var(--graphite); margin:0 0 var(--sp-2);
+  }
+  .project p{ margin:0 0 var(--sp-2); }
+  .project .status{ font-size:.9375rem; color:var(--graphite); margin:0; }
+  .earlier{ max-width:var(--measure); color:var(--graphite); font-size:.9375rem; }
+
+  .job{ margin:0 0 var(--sp-4); max-width:var(--measure); }
+  .job:last-child{ margin-bottom:0; }
+  .job h3{
+    font-family:"Fraunces", Georgia, serif; font-weight:650;
+    font-size:1.25rem; line-height:1.3; margin:0 0 var(--sp-1);
+  }
+  .job .meta{
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-size:.8125rem; color:var(--graphite); margin:0 0 var(--sp-2);
+  }
+  .job p{ margin:0; }
+
+  .skill-groups{ display:grid; grid-template-columns:1fr; gap:var(--sp-3) var(--sp-5); }
+  .skill-groups dt{
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-size:.8125rem; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--graphite); margin:0 0 var(--sp-1);
+  }
+  .skill-groups dd{ margin:0; max-width:52ch; }
+  @media (min-width:720px){
+    .skill-groups{ grid-template-columns:1fr 1fr; }
+    .intro{ padding-top:var(--sp-6); }
+  }
+
+  .edu p{ max-width:var(--measure); margin:0 0 var(--sp-2); }
+  .edu p:last-child{ margin-bottom:0; }
+
+  /* Contact band */
+  footer{
+    background:var(--ink); color:var(--paper); margin-top:0;
+  }
+  footer .wrap{ padding-top:var(--sp-5); padding-bottom:var(--sp-5); }
+  footer h2{
+    font-family:"Fraunces", Georgia, serif; font-weight:650;
+    font-size:2rem; line-height:1.15; margin:0 0 var(--sp-2);
+  }
+  footer p{ max-width:var(--measure); margin:0 0 var(--sp-3); }
+  footer a{ color:var(--paper); }
+  footer a:hover{ color:var(--amber); }
+  footer a:focus-visible{ outline:2px solid var(--paper); outline-offset:3px; }
+  footer .mail{ color:var(--amber); font-weight:500; }
+  footer .mail:hover{ color:var(--paper); }
+  .foot-meta{
+    font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:.8125rem;
+    color:#B9B2A0; display:flex; flex-wrap:wrap; gap:var(--sp-1) var(--sp-3);
+    border-top:1px solid #453F31; padding-top:var(--sp-3); margin-top:var(--sp-4);
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{ transition:none !important; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head wrap">
+  <a class="wordmark" href="#top">Dylan Michel</a>
+  <nav aria-label="Sections">
+    <ul>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main" class="wrap">
+  <div class="intro" id="top">
+    <h1>Dylan Michel</h1>
+    <p class="role">IT professional in Miami, Florida, moving into systems administration. Microsoft 365, Windows endpoints, and the automation that keeps an eye on them.</p>
+    <p>I spent three years on General Electric&rsquo;s service desk supporting a 300,000+ user environment, then two years at Mural Technologies advising small businesses on Microsoft 365. Since October 2026 I have been building and running my own systems monitoring service at home, and working through the PortSwigger Web Security Academy toward the Burp Suite Certified Practitioner certification.</p>
+    <p class="meta-row">
+      <span>Miami, FL</span>
+      <a href="https://github.com/dylanmichel3">github.com/dylanmichel3</a>
+      <a href="https://www.linkedin.com/in/dylan-michel-a72434137">LinkedIn</a>
+      <a href="resume.pdf">R&eacute;sum&eacute; (PDF)</a>
+    </p>
+  </div>
+
+  <section id="work" aria-labelledby="work-label">
+    <h2 class="sec-label" id="work-label">Selected work</h2>
+
+    <article class="project">
+      <h3>Personal systems monitoring and administration service</h3>
+      <p class="meta">Oct 2026 - present &middot; Python, Flask, PowerShell, Tailscale, SQLite</p>
+      <p>A token-authenticated Flask service on my Windows PC, reachable only over Tailscale. It reports system status, wakes other machines on my home network, and runs sleep, restart, and shutdown commands only after a confirmation step. PowerShell scripts check Windows Update compliance every six hours and show pending update titles, the reboot-required flag, and the last installed hotfix on a web dashboard.</p>
+      <p>Around the service: an event-log digest (Get-WinEvent, last 24 hours, grouped by source and level), a disk-usage analyzer covering per-drive totals and the largest top-level folders, and hourly internet speed tests stored in SQLite with 24h, 7d, and 30d history. Health checks run every 30 minutes and alert only when reachability or disk usage changes state. A patch digest lands weekly and an event digest daily.</p>
+      <p class="status">Private repository. In daily use at home.</p>
+    </article>
+
+    <article class="project">
+      <h3>Microsoft Sentinel SIEM honeypot</h3>
+      <p class="meta">Microsoft Azure &middot; Microsoft Sentinel &middot; Log Analytics &middot; PowerShell</p>
+      <p>A deliberately exposed Azure virtual machine watched by Microsoft Sentinel. Failed Windows sign-in events flow into Log Analytics, and PowerShell extracts the source IP addresses, enriches them through a geolocation API, and writes custom logs so attack origins can be visualized by IP address and country.</p>
+      <p class="status">Private repository.</p>
+    </article>
+
+    <article class="project">
+      <h3>Web application firewall home lab</h3>
+      <p class="meta">VirtualBox &middot; Kali Linux &middot; Ubuntu &middot; Apache &middot; PHP &middot; MySQL &middot; SafeLine WAF</p>
+      <p>A VirtualBox lab built to see both sides of a web attack: Kali Linux and Ubuntu hosts, the Damn Vulnerable Web Application running on Apache, PHP, and MySQL for testing, and the SafeLine web application firewall in front of it for defensive monitoring of the same traffic.</p>
+      <p class="status">Home lab.</p>
+    </article>
+
+    <article class="project">
+      <h3>PortSwigger Web Security Academy, second pass</h3>
+      <p class="meta">In progress &middot; Burp Suite Certified Practitioner (BSCP) track</p>
+      <p>I completed the Academy once by following solution videos and retained little, so I am redoing the labs one by one without walkthroughs, at least 15 hours a week since September 2026. I solved my first SQL injection lab solo in October 2026. The end goal is genuine web application pentesting proficiency and the BSCP certification.</p>
+      <p class="status">In progress.</p>
+    </article>
+
+    <p class="earlier">Earlier work: the C# and XML support tool I built during my GE internship in 2017, using Cortana voice functionality for command updates and FAQ responses, is public at <a href="https://github.com/dylanmichel3/CortanaProj">github.com/dylanmichel3/CortanaProj</a>.</p>
+  </section>
+
+  <section id="experience" aria-labelledby="experience-label">
+    <h2 class="sec-label" id="experience-label">Experience</h2>
+
+    <article class="job">
+      <h3>Microsoft 365 Technical Business Advisor, Mural Technologies</h3>
+      <p class="meta">Remote &middot; Oct 2023 - May 2025</p>
+      <p>Advised 10 to 13 small-business customers daily on Microsoft 365 administration, subscription capabilities, onboarding, and feature adoption. Guided email and SharePoint migrations to Microsoft 365, and diagnosed access, service, application, and configuration issues across Exchange Online, Teams, SharePoint, OneDrive, Defender, Copilot, and Power BI.</p>
+    </article>
+
+    <article class="job">
+      <h3>Service Desk Associate, General Electric</h3>
+      <p class="meta">Miami, FL &middot; Feb 2018 - Aug 2021</p>
+      <p>Delivered phone, email, and chat support for a global environment of 300,000+ users, managing incidents in ServiceNow and assisting up to 30 users daily. A knowledge base article I authored for a high-volume issue reduced related support tickets by 40%, and recurring-incident analysis contributed to a 20% reduction in customer-reported incidents.</p>
+    </article>
+
+    <article class="job">
+      <h3>IT / Programming Intern, General Electric</h3>
+      <p class="meta">Miami, FL &middot; Jan 2017 - Jun 2017</p>
+      <p>Managed 20+ daily ServiceNow tickets for an internal platform, tracking incidents from intake through follow-up. Developed a C# and XML support tool using Microsoft Cortana voice functionality to modify commands and provide FAQ responses.</p>
+    </article>
+  </section>
+
+  <section id="skills" aria-labelledby="skills-label">
+    <h2 class="sec-label" id="skills-label">Skills</h2>
+    <dl class="skill-groups">
+      <div>
+        <dt>Microsoft 365</dt>
+        <dd>Admin Center, Exchange Online, SharePoint Online, Teams, OneDrive for Business, Defender, Copilot, Power BI</dd>
+      </div>
+      <div>
+        <dt>Systems and endpoint</dt>
+        <dd>Windows 10/11, macOS, Linux, iOS, Android, Active Directory, Intune, MobileIron MDM</dd>
+      </div>
+      <div>
+        <dt>Scripting and tools</dt>
+        <dd>PowerShell, Bash, Python, SQL, ServiceNow, Tailscale, Flask, SQLite, Wireshark, TCP/IP</dd>
+      </div>
+      <div>
+        <dt>Security operations</dt>
+        <dd>Microsoft Sentinel, Splunk, Windows Event Log, Windows Update COM API, log analysis, incident triage</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section id="education" class="edu" aria-labelledby="education-label">
+    <h2 class="sec-label" id="education-label">Education and certifications</h2>
+    <p><strong>Bachelor of Science in Information Technology</strong>, Florida International University, Aug 2023. Focus: cybersecurity and system administration.</p>
+    <p>Google Cybersecurity Certificate (Sep 2023) &middot; TryHackMe SOC Level 1 &middot; Burp Suite Certified Practitioner, in progress</p>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Get in touch</h2>
+    <p>Email is the fastest way to reach me: <a class="mail" href="mailto:dylanmichel3@gmail.com">dylanmichel3@gmail.com</a>. I am in Miami, Florida, and I am looking for junior systems administrator, systems administrator, and Microsoft 365 administrator roles, remote or South Florida.</p>
+    <p class="foot-meta">
+      <span>Miami, FL</span>
+      <a href="https://github.com/dylanmichel3">GitHub</a>
+      <a href="https://www.linkedin.com/in/dylan-michel-a72434137">LinkedIn</a>
+      <span>Hosted on GitHub Pages</span>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
